@@ -10,7 +10,9 @@
     -   MySQL Driver
     -   Spring DevTools
 - set up backend endpoints for superhero  CRUD
-
+- set up entity for superhero
+- installed lombok
+- set up git repository
 
 
 

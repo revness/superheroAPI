@@ -16,7 +16,7 @@
 - set up post endpoint
 - set up getAll endpoint
 - set up delete byId endpoint
-
+- set up getById endpoint
 
 
 

@@ -102,5 +102,4 @@ public class SuperheroService {
         superheroRepository.delete(superheroToDelete);
         return true;
     }
-
 }

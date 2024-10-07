@@ -14,6 +14,8 @@
 - installed lombok
 - set up git repository
 - set up post endpoint
+- set up getAll endpoint
+- set up delete byId endpoint
 
 
 

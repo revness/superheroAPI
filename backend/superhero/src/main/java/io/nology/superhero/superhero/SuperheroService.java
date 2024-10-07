@@ -1,11 +1,14 @@
 package io.nology.superhero.superhero;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.nology.superhero.superhero.entity.Superhero;
-import io.nology.superhero.superhero.entity.Superhero.Biography;
-import io.nology.superhero.superhero.entity.Superhero.Connections;
+import io.nology.superhero.superhero.entity.embedded.Biography;
+import io.nology.superhero.superhero.entity.embedded.Connections;
 import io.nology.superhero.superhero.entity.embedded.Appearance;
 import io.nology.superhero.superhero.entity.embedded.Images;
 import io.nology.superhero.superhero.entity.embedded.Powerstats;
@@ -78,6 +81,26 @@ public class SuperheroService {
 
         return superheroRepository.save(superhero);
 
+    }
+
+    public List<Superhero> findAllSuperheroes() {
+        List<Superhero> superheroes = superheroRepository.findAll();
+        return superheroes;
+    }
+
+    public Optional<Superhero> findSuperheroById(Long id) {
+        Optional<Superhero> superhero = superheroRepository.findById(id);
+        return superhero;
+    }
+
+    public boolean deleteSuperheroById(Long id) {
+        Optional<Superhero> superhero = superheroRepository.findById(id);
+        if (superhero.isEmpty()) {
+            return false;
+        }
+        Superhero superheroToDelete = superhero.get();
+        superheroRepository.delete(superheroToDelete);
+        return true;
     }
 
 }

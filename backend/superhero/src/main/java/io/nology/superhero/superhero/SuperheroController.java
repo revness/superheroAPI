@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.nology.superhero.superhero.entity.Superhero;
 import jakarta.validation.Valid;
 
 @RestController
@@ -19,6 +20,6 @@ public class SuperheroController {
     @PostMapping
     public ResponseEntity<Superhero> createSuperhero(@Valid @RequestBody CreateSuperheroDTO data) throws Exception {
         Superhero createdSuperhero = this.superheroService.createSuperhero(data);
-        return ResponseEntity<Superhero>(createdSuperhero, HttpStatus.CREATED);
+        return new ResponseEntity<Superhero>(createdSuperhero, HttpStatus.CREATED);
     }
 }

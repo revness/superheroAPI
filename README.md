@@ -13,6 +13,7 @@
 - set up entity for superhero
 - installed lombok
 - set up git repository
+- set up post endpoint
 
 
 

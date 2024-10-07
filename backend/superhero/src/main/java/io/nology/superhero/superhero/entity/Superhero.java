@@ -1,11 +1,17 @@
-package io.nology.superhero.superhero;
+package io.nology.superhero.superhero.entity;
 
 import java.util.List;
 
+import io.nology.superhero.superhero.entity.embedded.Appearance;
+import io.nology.superhero.superhero.entity.embedded.Images;
+import io.nology.superhero.superhero.entity.embedded.Powerstats;
+import io.nology.superhero.superhero.entity.embedded.Work;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,6 +27,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Superhero {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String slug;
@@ -43,50 +50,11 @@ public class Superhero {
     @Embedded
     private Images images;
 
-
     @Embeddable
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-
-    public static class Powerstats {
-        private int intelligence;
-        private int strength;
-        private int speed;
-        private int durability;
-        private int power;
-        private int combat;
-
-        }
-
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-
-    public static class Appearance {
-        private String gender;
-        private String race;
-
-        @ElementCollection
-        private List<String> height;
-
-        @ElementCollection
-        private List<String> weight;
-
-        private String eyeColor;
-        private String hairColor;
-
-    }
-
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-
     public static class Biography {
         private String fullName;
         private String alterEgos;
@@ -106,35 +74,10 @@ public class Superhero {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-
-    public static class Work {
-        private String occupation;
-        private String base;
-
-    }
-
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-
     public static class Connections {
         private String groupAffiliation;
         private String relatives;
 
     }
 
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Images {
-        private String xs;
-        private String sm;
-        private String md;
-        private String lg;
-
-    }
 }

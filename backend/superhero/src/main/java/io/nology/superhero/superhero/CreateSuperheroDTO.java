@@ -1,61 +1,51 @@
 package io.nology.superhero.superhero;
 
 import lombok.Data;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Max;
 import java.util.List;
 
 @Data
 public class CreateSuperheroDTO {
+
+    private Long id;
+
     @NotBlank(message = "Name is required")
     private String name;
 
     @NotBlank(message = "Slug is required")
     private String slug;
 
+    @Valid
     @NotNull(message = "Powerstats are required")
     private PowerstatsDTO powerstats;
 
+    @Valid
     @NotNull(message = "Appearance is required")
     private AppearanceDTO appearance;
 
+    @Valid
     @NotNull(message = "Biography is required")
     private BiographyDTO biography;
 
-    @NotBlank(message = "Occupation is required")
-    private String occupation;
+    @Valid
+    @NotNull(message = "Work is required")
+    private WorkDTO work;
 
-    private String base;
+    @Valid
+    @NotNull(message = "Connections are required")
+    private ConnectionsDTO connections;
 
-    private String groupAffiliation;
-    private String relatives;
+    private ImagesDTO images;
 
     @Data
     public static class PowerstatsDTO {
-        @Min(0)
-        @Max(100)
         private int intelligence;
-
-        @Min(0)
-        @Max(100)
         private int strength;
-
-        @Min(0)
-        @Max(100)
         private int speed;
-
-        @Min(0)
-        @Max(100)
         private int durability;
-
-        @Min(0)
-        @Max(100)
         private int power;
-
-        @Min(0)
-        @Max(100)
         private int combat;
     }
 
@@ -78,5 +68,25 @@ public class CreateSuperheroDTO {
         private String firstAppearance;
         private String publisher;
         private String alignment;
+    }
+
+    @Data
+    public static class WorkDTO {
+        private String occupation;
+        private String base;
+    }
+
+    @Data
+    public static class ConnectionsDTO {
+        private String groupAffiliation;
+        private String relatives;
+    }
+
+    @Data
+    public static class ImagesDTO {
+        private String xs;
+        private String sm;
+        private String md;
+        private String lg;
     }
 }
